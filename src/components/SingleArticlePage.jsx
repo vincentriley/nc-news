@@ -1,20 +1,30 @@
 import { useEffect, useState } from "react"
 import fetchData from "../utils/api"
 import { useParams, useNavigate } from "react-router-dom"
-import { Button } from "react-bootstrap"
+import { Button, Spinner } from "react-bootstrap"
 
 
 const SingleArticlePage = () => {
     const {article_id} = useParams()
     const [article, setArticle] = useState({})
+    const [isLoading, setIsLoading] = useState(false);
+    const [isError, setIsError] = useState(false);
     const navigate = useNavigate()
 
     useEffect(() => {
+        setIsLoading(true)
         fetchData({endpoint: `/articles/${article_id}`})
         .then(({article}) => {
             setArticle(article)
+            setIsLoading(false)
+            setIsError(false)
         })
-    })
+        .catch((err) => {
+            console.error(err);
+            setIsLoading(false);
+            setIsError(true);
+        })
+    },[])
 
     const handleBackToArticlesClick = () => {
         navigate("/articles")
@@ -23,6 +33,11 @@ const SingleArticlePage = () => {
     const handleBackToTopicClick = () => {
         navigate(`/topics/${article.topic}`)
     }
+
+    if (isLoading) return <Spinner animation="border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </Spinner> 
+    if (isError) return <p>Something went wrong...</p>
 
     return (
         <div>

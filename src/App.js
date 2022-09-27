@@ -9,6 +9,7 @@ import LoginPage from "./components/LoginPage";
 import Header from "./components/Header";
 import FilteredTopics from "./components/FilteredTopics";
 import SingleArticlePage from "./components/SingleArticlePage";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   
@@ -24,7 +25,8 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
 		  <Route path="/topics/:topic_slug" element={<FilteredTopics />} />
 		  <Route path="/articles/:article_id" element={<SingleArticlePage />} />
-        </Routes>
+		  <Route path="*" element={<ErrorPage />}  />
+         </Routes>
 			</div>
 		</BrowserRouter>
 	);
