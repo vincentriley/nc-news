@@ -6,18 +6,22 @@ import HomePage from "./components/HomePage";
 import ArticlesPage from "./components/ArticlesPage";
 import UsersPage from "./components/UsersPage";
 import LoginPage from "./components/LoginPage";
+import Header from "./components/Header";
+import FilteredTopics from "./components/FilteredTopics";
 
 function App() {
+  
 	return (
 		<BrowserRouter>
 			<div className='App'>
 				<NavBar />
-				<h1>test</h1>
+				<Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/users" element={<UsersPage />} />
           <Route path="/login" element={<LoginPage />} />
+		  <Route path="topics/:topic_slug" element={<FilteredTopics />} />
         </Routes>
 			</div>
 		</BrowserRouter>
