@@ -1,8 +1,11 @@
 import {Nav} from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
+import { useContext } from "react"
+import { UserContext } from "../contexts/UserLoggedIn"
 
 const NavBar = () => {
     const navigate = useNavigate()
+    const {user, setUser} = useContext(UserContext)
     return (
         <Nav
         activeKey="/home"
@@ -18,6 +21,12 @@ const NavBar = () => {
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="/users">Users</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="/login">Login</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="/users">User: {user}</Nav.Link>
         </Nav.Item>
       </Nav>
     )

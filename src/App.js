@@ -9,10 +9,14 @@ import Header from "./components/Header";
 import FilteredTopics from "./components/FilteredTopics";
 import SingleArticlePage from "./components/SingleArticlePage";
 import ErrorPage from "./components/ErrorPage";
+import { UserContext } from "./contexts/UserLoggedIn";
+import { useState } from "react";
 
 function App() {
+	const [user, setUser] = useState("")
   
 	return (
+		<UserContext.Provider value={{user, setUser}}>
 		<BrowserRouter>
 			<div className='App'>
 				<NavBar />
@@ -23,10 +27,12 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
 		  <Route path="/topics/:topic_slug" element={<FilteredTopics />} />
 		  <Route path="/articles/:article_id" element={<SingleArticlePage />} />
+		  <Route path="/login" element={<LoginPage />} />
 		  <Route path="*" element={<ErrorPage />}  />
          </Routes>
 			</div>
 		</BrowserRouter>
+		</UserContext.Provider>
 	);
 }
 

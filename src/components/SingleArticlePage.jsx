@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import { Button, Spinner } from "react-bootstrap"
 import Votes from "./Votes"
 import Comments from "./Comments"
-
+import AddComment from "./AddComment"
 
 const SingleArticlePage = () => {
     const {article_id} = useParams()
@@ -54,6 +54,7 @@ const SingleArticlePage = () => {
             <br />
             <p>{article.body}</p>
             <h2>Comments</h2>
+            <AddComment />
             <Comments articleId={article_id} />
         </div>
     )
