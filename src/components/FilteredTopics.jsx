@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom"
 import { useEffect } from "react"
 import fetchData from "../utils/api"
 import { useState } from "react"
-import { Col, Card, Button, Spinner } from "react-bootstrap"
+import { Button, Spinner } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import ArticleCard from "./ArticleCard"
 
@@ -26,7 +26,7 @@ const FilteredTopics = () => {
             setIsLoading(false);
             setIsError(true);
         })
-    },[])
+    },[topic_slug])
 
     const handleClick = () => {
         navigate("/articles")

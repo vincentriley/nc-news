@@ -1,6 +1,6 @@
 import fetchData from "../utils/api"
 import { useState, useEffect } from "react"
-import { Card, Col, Spinner } from "react-bootstrap"
+import { Spinner } from "react-bootstrap"
 import CategoryDropdown from "./CategoryDropdown"
 import ArticleCard from "./ArticleCard"
 
