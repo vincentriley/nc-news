@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import fetchData from "../utils/api"
 import { useParams, useNavigate } from "react-router-dom"
 import { Button, Spinner } from "react-bootstrap"
+import Votes from "./Votes"
 
 
 const SingleArticlePage = () => {
@@ -9,6 +10,7 @@ const SingleArticlePage = () => {
     const [article, setArticle] = useState({})
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
+    
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -24,7 +26,7 @@ const SingleArticlePage = () => {
             setIsLoading(false);
             setIsError(true);
         })
-    },[])
+    },[article_id])
 
     const handleBackToArticlesClick = () => {
         navigate("/articles")
@@ -47,6 +49,7 @@ const SingleArticlePage = () => {
             <h1>{article.title}</h1>
             <br />
             <h2>Written by {article.author}</h2>
+            <Votes articleId={article_id} />
             <br />
             <p>{article.body}</p>
         </div>
