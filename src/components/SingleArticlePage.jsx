@@ -3,6 +3,7 @@ import fetchData from "../utils/api"
 import { useParams, useNavigate } from "react-router-dom"
 import { Button, Spinner } from "react-bootstrap"
 import Votes from "./Votes"
+import Comments from "./Comments"
 
 
 const SingleArticlePage = () => {
@@ -52,6 +53,8 @@ const SingleArticlePage = () => {
             <Votes articleId={article_id} />
             <br />
             <p>{article.body}</p>
+            <h2>Comments</h2>
+            <Comments articleId={article_id} />
         </div>
     )
 }
