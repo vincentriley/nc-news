@@ -4,13 +4,14 @@ import { useParams, useNavigate } from "react-router-dom"
 import { Button, Spinner } from "react-bootstrap"
 import Votes from "./Votes"
 import Comments from "./Comments"
-
+import AddComment from "./AddComment"
 
 const SingleArticlePage = () => {
     const {article_id} = useParams()
     const [article, setArticle] = useState({})
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
+    const [commentAdded, setCommentAdded] = useState(false)
     
     const navigate = useNavigate()
 
@@ -21,13 +22,14 @@ const SingleArticlePage = () => {
             setArticle(article)
             setIsLoading(false)
             setIsError(false)
+            setCommentAdded(false)
         })
         .catch((err) => {
             console.error(err);
             setIsLoading(false);
             setIsError(true);
         })
-    },[article_id])
+    },[article_id, commentAdded])
 
     const handleBackToArticlesClick = () => {
         navigate("/articles")
@@ -54,6 +56,7 @@ const SingleArticlePage = () => {
             <br />
             <p>{article.body}</p>
             <h2>Comments</h2>
+            <AddComment articleId={article_id} setCommentAdded={setCommentAdded} />
             <Comments articleId={article_id} />
         </div>
     )
