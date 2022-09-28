@@ -11,6 +11,7 @@ const SingleArticlePage = () => {
     const [article, setArticle] = useState({})
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
+    const [commentAdded, setCommentAdded] = useState(false)
     
     const navigate = useNavigate()
 
@@ -21,13 +22,14 @@ const SingleArticlePage = () => {
             setArticle(article)
             setIsLoading(false)
             setIsError(false)
+            setCommentAdded(false)
         })
         .catch((err) => {
             console.error(err);
             setIsLoading(false);
             setIsError(true);
         })
-    },[article_id])
+    },[article_id, commentAdded])
 
     const handleBackToArticlesClick = () => {
         navigate("/articles")
@@ -54,7 +56,7 @@ const SingleArticlePage = () => {
             <br />
             <p>{article.body}</p>
             <h2>Comments</h2>
-            <AddComment />
+            <AddComment articleId={article_id} setCommentAdded={setCommentAdded} />
             <Comments articleId={article_id} />
         </div>
     )

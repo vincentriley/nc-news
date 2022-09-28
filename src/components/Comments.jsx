@@ -8,6 +8,9 @@ const Comments = ({articleId}) => {
     useEffect(() => {
         fetchData({endpoint: `/articles/${articleId}/comments`})
         .then(({comments}) => {
+            comments.sort((a,b) => {
+                return b.comment_id - a.comment_id
+            })
             setComments(comments)
         })
     }, [])
