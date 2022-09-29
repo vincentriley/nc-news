@@ -43,8 +43,9 @@ const FilteredTopics = () => {
 
     return (
         <div className="container">
-            <h1>{topic_slug}</h1>
+            <h1>Articles about {topic_slug}</h1>
             <Button onClick={handleClick}>Back To All Articles</Button>
+            <br />
             <OrderArticles  setSortAndOrder={setSortAndOrder}/>
             {articles.map((article) => {
                 return (

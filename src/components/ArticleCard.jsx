@@ -8,7 +8,7 @@ const ArticleCard = ({article}) => {
     }
     return (
         <Col>
-            <Card style={{width: '18rem'}}>
+            <Card>
             <Card.Body>
                 <Card.Title>{article.title}</Card.Title>
                 <Card.Text>Author : {article.author}</Card.Text>

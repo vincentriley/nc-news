@@ -36,8 +36,10 @@ const ArticlesPage = () => {
     return (
     <div className="container">
     <h1>All Articles</h1>
-    <OrderArticles setSortAndOrder={setSortAndOrder} />
     <CategoryDropdown />
+    <br/>
+    <OrderArticles setSortAndOrder={setSortAndOrder} />
+    
         {articles.map((article) => {
             return (
                 <ArticleCard key={article.article_id} article={article} />
