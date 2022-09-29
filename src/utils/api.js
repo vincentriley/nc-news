@@ -10,6 +10,9 @@ export default function fetchData({endpoint = "/", params = {}, method = "get", 
         data: data,
     })
     .then((response) => {
+        if (response.status === 204) {
+            return response.status
+        }
         return response.data;
     })
     .catch((err) => {
