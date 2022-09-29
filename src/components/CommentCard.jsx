@@ -28,9 +28,10 @@ const CommentCard = ({comment, setCommentDeleted}) => {
                 <Card.Title>{comment.author}</Card.Title>
                 <Card.Text>{comment.body}</Card.Text>
                 <Card.Text>Votes : {comment.votes}</Card.Text>
-                <Button onClick={handleClick} variant="danger" disabled={comment.author !== user}>{isLoading ? "...Deleting" : "Delete"}</Button>
+                {
+                    comment.author === user ? <Button onClick={handleClick} variant="danger">{isLoading ? "...Deleting" : "Delete"}</Button> : ""
+                }
             </Card.Body>
-
             </Card>
         </Col>
     )
