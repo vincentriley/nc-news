@@ -22,7 +22,6 @@ const ArticlesPage = () => {
             setIsError(false)
         })
         .catch((err) => {
-            console.error(err);
             setIsLoading(false);
             setIsError(true);
         })

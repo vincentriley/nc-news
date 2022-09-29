@@ -14,17 +14,20 @@ const NavBar = () => {
         }}
       >
         <Nav.Item>
-          <Nav.Link eventKey="/">Home</Nav.Link>
+          <Nav.Link eventKey="/">Articles</Nav.Link>
         </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="/articles">Articles</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
+        {
+          user === "" ?
+          <Nav.Item>
           <Nav.Link eventKey="/login">Login</Nav.Link>
         </Nav.Item>
+        :
         <Nav.Item>
-          <Nav.Link eventKey="/users">User: {user}</Nav.Link>
-        </Nav.Item>
+        <Nav.Link eventKey="/users" >User: {user}</Nav.Link>
+      </Nav.Item>
+        }
+        
+        
       </Nav>
     )
 }

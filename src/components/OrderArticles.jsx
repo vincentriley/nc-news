@@ -50,7 +50,11 @@ const OrderArticles = ({ setSortAndOrder}) => {
                 <Dropdown.Item onClick={handleOrderByClick} id="asc" >Ascending</Dropdown.Item>
                 <Dropdown.Item onClick={handleOrderByClick} id="desc" >Descending</Dropdown.Item>
             </Dropdown.Menu>
-            <Button as={ButtonGroup} onClick={handleSubmit} variant="info">Go</Button>
+            {
+                sortBy !== "" && orderBy !== "" ?
+                <Button as={ButtonGroup} onClick={handleSubmit} variant="info" >Go</Button> : ""
+            }
+            
             </Dropdown>
         </>
     )

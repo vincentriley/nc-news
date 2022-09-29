@@ -22,8 +22,7 @@ function App() {
 				<NavBar />
 				<Header />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/articles" element={<ArticlesPage />} />
+          <Route path="/" element={<ArticlesPage />} />
           <Route path="/login" element={<LoginPage />} />
 		  <Route path="/topics/:topic_slug" element={<FilteredTopics />} />
 		  <Route path="/articles/:article_id" element={<SingleArticlePage />} />
