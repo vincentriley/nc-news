@@ -5,7 +5,7 @@ import { UserContext } from "../contexts/UserLoggedIn"
 
 const NavBar = () => {
     const navigate = useNavigate()
-    const {user, setUser} = useContext(UserContext)
+    const {user} = useContext(UserContext)
     return (
         <Nav
         activeKey="/home"

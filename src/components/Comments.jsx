@@ -23,7 +23,7 @@ const Comments = ({articleId}) => {
         .catch(() => {
             setIsError(true)
         })
-    }, [commentDeleted])
+    }, [commentDeleted, articleId])
 
     if (isLoading) return <Spinner animation="border" role="status">
     <span className="visually-hidden">Loading...</span>
