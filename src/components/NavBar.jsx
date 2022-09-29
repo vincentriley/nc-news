@@ -20,9 +20,6 @@ const NavBar = () => {
           <Nav.Link eventKey="/articles">Articles</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="/users">Users</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
           <Nav.Link eventKey="/login">Login</Nav.Link>
         </Nav.Item>
         <Nav.Item>
