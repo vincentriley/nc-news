@@ -33,7 +33,7 @@ const FilteredTopics = () => {
     },[topic_slug, sortAndOrder])
 
     const handleClick = () => {
-        navigate("/articles")
+        navigate("/")
     }
 
     if (isLoading) return <Spinner animation="border" role="status">
