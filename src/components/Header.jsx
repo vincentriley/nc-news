@@ -1,5 +1,7 @@
+import header from "../img/NORTHCODERS-NEWS.png"
+
 const Header = () => {
-    return <h1>News</h1>
+    return <img style={{width:"70vw"}} src={header} />
 }
 
 export default Header

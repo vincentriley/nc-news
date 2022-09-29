@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Button, Spinner } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import ArticleCard from "./ArticleCard"
+import OrderArticles from "./OrderArticles"
 
 const FilteredTopics = () => {
     const {topic_slug} = useParams()
@@ -12,10 +13,13 @@ const FilteredTopics = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const navigate = useNavigate()
+    const [sortAndOrder, setSortAndOrder] = useState({sortBy: "", orderBy: ""})
 
     useEffect(() => {
         setIsLoading(true)
-        fetchData({endpoint: "/articles", params: {topic: topic_slug}})
+        let sortQuery = sortAndOrder.sortBy === "" ? "" : `?sort_by=${sortAndOrder.sortBy}`
+        let orderQuery = sortAndOrder.orderBy === "" ? "" : `&order=${sortAndOrder.orderBy}`
+        fetchData({endpoint: `/articles${sortQuery}${orderQuery}`, params: {topic: topic_slug}})
         .then(({articles}) => {
             setArticles(articles)
             setIsLoading(false)
@@ -26,7 +30,7 @@ const FilteredTopics = () => {
             setIsLoading(false);
             setIsError(true);
         })
-    },[topic_slug])
+    },[topic_slug, sortAndOrder])
 
     const handleClick = () => {
         navigate("/articles")
@@ -39,8 +43,10 @@ const FilteredTopics = () => {
 
     return (
         <div className="container">
-            <h1>{topic_slug}</h1>
+            <h1>Articles about {topic_slug}</h1>
             <Button onClick={handleClick}>Back To All Articles</Button>
+            <br />
+            <OrderArticles  setSortAndOrder={setSortAndOrder}/>
             {articles.map((article) => {
                 return (
                     <ArticleCard  key={article.article_id} article={article} />
